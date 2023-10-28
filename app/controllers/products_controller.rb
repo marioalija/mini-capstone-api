@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  def all_products
+  def index
     @products = Product.all
     render :index
   end
