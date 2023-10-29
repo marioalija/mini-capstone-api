@@ -11,10 +11,10 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.create(
-      name: "Sony TV",
-      price: 2000,
-      image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr0zuY28I0HoftTvVDFZ82xcjOaDCUYm8v_A&usqp=CAU",
-      description: "Best resolution and colors from any other television",
+      name: params[:name],
+      price: params[:price],
+      image_url: params[:image_url],
+      description: params[:description],
     )
     render :show
   end
