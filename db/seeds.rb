@@ -1,7 +1,5 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
+# Product.destroy_all
+
 # product = Product.new(name: "Apple Watch", price: 800, image_url: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ML773_VW_34FR+watch-case-45-stainless-graphite-s9_VW_34FR+watch-face-45-stainless-graphite-s9_VW_34FR?wid=2000&hei=2000&fmt=png-alpha&.v=1694507905569", description: "Can
 #  do almost everything yoour phone can, but on your wrist")
 # product.save
