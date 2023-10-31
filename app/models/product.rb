@@ -31,4 +31,8 @@ class Product < ApplicationRecord
   def friendly_created_at
     created_at.strftime("%A, %d %b %Y %l:%M %p")
   end
+
+  def supplier
+    Supplier.find_by(id: supplier_id)
+  end
 end
