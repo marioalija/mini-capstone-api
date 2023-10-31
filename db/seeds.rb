@@ -15,3 +15,12 @@
 
 # product = Product.new(name: "Water Bottle", price: 20, image_url: "https://www.hydroflask.com/media/catalog/product/w/3/w32bts600-berry-straighton_1.jpg", description: "Your beverage is always just the right temperature")
 # product.save
+
+# supplier = Supplier.new(name: "Apple", email: "apple@example.com", phone_number: "111-11-1111")
+# supplier.save
+
+# supplier = Supplier.new(name: "Sony", email: "sony@example.com", phone_number: "333-33-3333")
+# supplier.save
+
+# supplier = Supplier.new(name: "Facebook", email: "facebook@example.com", phone_number: "555-55-5555")
+# supplier.save
