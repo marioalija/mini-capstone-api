@@ -24,3 +24,5 @@
 
 # supplier = Supplier.new(name: "Facebook", email: "facebook@example.com", phone_number: "555-55-5555")
 # supplier.save
+
+image = Image.create(url: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ML773_VW_34FR+watch-case-45-stainless-graphite-s9_VW_34FR+watch-face-45-stainless-graphite-s9_VW_34FR?wid=2000&hei=2000&fmt=png-alpha&.v=1694507905569", url: "https://www.att.com/scmsassets/global/devices/phones/apple/apple-iphone-14-pro-max/carousel/deeppurple/deeppurple-1.png", url: "https://i5.walmartimages.com/seo/Sony-PlayStation-5-Video-Game-Console_9333b8cd-773e-49d4-8e85-51c4114fcd56.bbf5c4e4f3746ddc28ac982117cdbf9a.jpeg", url: "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6473/6473553ld.jpg", url: "https://www.hydroflask.com/media/catalog/product/w/3/w32bts600-berry-straighton_1.jpg")
