@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    if (@order = current_user.order.find_by(id: params[:id]))
+    if (@order = current_user.orders.find_by(id: params[:id]))
       render :show
     else
       render json: { message: "You can only view your own orders" }

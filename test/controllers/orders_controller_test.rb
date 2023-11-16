@@ -1,37 +1,33 @@
 require "test_helper"
 
 class OrdersControllerTest < ActionDispatch::IntegrationTest
-  require "test_helper"
+  setup do
+    @user = User.create(name: "Test", email: "test@test.com", password: "password")
+    @order = Order.create(user_id: @user.id, product_id: Product.first.id, quantity: 10)
+    post "/sessions.json", params: { email: "test@test.com", password: "password" }
+    data = JSON.parse(response.body)
+    @jwt = data["jwt"]
+  end
 
-  class OrdersControllerTest < ActionDispatch::IntegrationTest
-    setup do
-      @user = User.create(name: "Test", email: "test@test.com", password: "password")
-      @order = Order.create(user_id: @user.id, product_id: Product.first.id, quantity: 10)
-      post "/sessions.json", params: { email: "test@test.com", password: "password" }
-      data = JSON.parse(response.body)
-      @jwt = data["jwt"]
-    end
+  test "index" do
+    get "/orders.json", headers: { "Authorization" => "Bearer #{@jwt}" }
+    assert_response 200
+  end
 
-    test "index" do
-      get "/orders.json", headers: { "Authorization" => "Bearer #{@jwt}" }
+  test "create" do
+    assert_difference "Order.count", 1 do
+      post "/orders.json",
+        params: { product_id: Product.first.id, quantity: 10 },
+        headers: { "Authorization" => "Bearer #{@jwt}" }
       assert_response 200
     end
+  end
 
-    test "create" do
-      assert_difference "Order.count", 1 do
-        post "/orders.json",
-          params: { product_id: Product.first.id, quantity: 10 },
-          headers: { "Authorization" => "Bearer #{@jwt}" }
-        assert_response 200
-      end
-    end
+  test "show" do
+    get "/orders/#{@order.id}.json", headers: { "Authorization" => "Bearer #{@jwt}" }
+    assert_response 200
 
-    test "show" do
-      get "/orders/#{@order.id}.json", headers: { "Authorization" => "Bearer #{@jwt}" }
-      assert_response 200
-
-      data = JSON.parse(response.body)
-      assert_equal ["user", "product", "quantity", "subtotal", "tax", "total"], data.keys
-    end
+    data = JSON.parse(response.body)
+    assert_equal ["id", "user", "subtotal", "quantity", "tax", "total", "product"], data.keys
   end
 end
