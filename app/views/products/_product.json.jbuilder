@@ -2,6 +2,7 @@ json.id product.id
 json.name product.name
 json.price product.price
 json.images product.images
+json.categories product.categories
 json.description product.description
 json.description_list product.description_list
 json.is_discounted? product.is_discounted?
