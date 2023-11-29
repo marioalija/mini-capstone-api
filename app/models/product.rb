@@ -6,8 +6,12 @@ class Product < ApplicationRecord
   # validates :price, numericality: { greater_then: 0 }
   # validates :description, presence: true
   # validates :description, length: { in: 10..250 }
+  belongs_to :supplier
+  has_many :images
+  has_many :category_products
   has_many :carted_products
   has_many :users, through: :carted_products
+  has_many :orders, through: :carted_products
 
   def description_list
     description.split(", ")
@@ -34,21 +38,9 @@ class Product < ApplicationRecord
     created_at.strftime("%A, %d %b %Y %l:%M %p")
   end
 
-  belongs_to :supplier
-  # def supplier
-  #   Supplier.find_by(id: supplier_id)
-  # end
-
-  has_many :images
-  # def images
-  #   Image.where(product_id: id)
-  # end
-  has_many :category_products
-  has_many :categories, through: :category_products
-
-  # def categories
-  #   category_products.map do |category_product|
-  #     category_product.category
-  #   end
-  #   end
+  def categories
+    category_products.map do |category_product|
+      category_product.category
+    end
+  end
 end

@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
-  has_many :carted_products
   belongs_to :user
+  has_many :carted_products
+  has_many :products, through: :carted_products
 
   def subtotal
     @product = Product.find_by(id: product_id)
