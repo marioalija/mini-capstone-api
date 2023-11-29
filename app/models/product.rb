@@ -6,6 +6,8 @@ class Product < ApplicationRecord
   # validates :price, numericality: { greater_then: 0 }
   # validates :description, presence: true
   # validates :description, length: { in: 10..250 }
+  has_many :carted_products
+  has_many :users, through: :carted_products
 
   def description_list
     description.split(", ")
